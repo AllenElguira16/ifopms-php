@@ -1,0 +1,84 @@
+/**
+ * Main Style
+ *
+ */
+
+
+ $theme-colors: (
+     "primary": #0ddb46
+ );
+@import '~bootstrap-material-design/scss/bootstrap-material-design';
+@import '~material-design-icons/iconfont/material-icons.css';
+// @import '~bootstrap/scss/bootstrap';
+@font-face {
+    font-family: "open-sans";
+    // src: url("fonts/OpenSans-Regular.ttf");
+    src: url("fonts/Montserrat-Regular.ttf");
+}
+
+
+:disabled {
+    cursor: not-allowed;
+}
+
+body{
+    font-family: "open-sans"!important;
+    @extend .bg-light;
+}
+    
+#wrapper, .wrapper{
+    @extend .container-fluid;
+    @extend .p-0;
+}
+
+.card {
+    @extend .shadow-sm;
+}
+
+.react{
+    a{
+        @extend .text-decoration-none;
+        @extend .text-dark;
+    }
+    
+    .liked, .comment-open{
+        @extend .text-primary;
+    }
+}
+
+#portfolio-header{
+    background: url('/Images/heading.jpg');
+    background-size: cover;
+    min-height: 200px;
+    @extend .text-light, .shadow;
+}
+
+@font-face {
+    font-family: "lemon-milk";
+    src: url('./fonts/LemonMilk.otf');
+}
+
+.lemon-milk{
+    font-family: 'lemon-milk';
+}
+
+// .bg-secondary
+//     .form-control, .custom-file-control, .is-focused .form-control, .is-focused .custom-file-control
+//         background-image: linear-gradient(to top, color-yiq(theme-color("secondary")) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, rgba(0, 0, 0, 0)1px)
+
+// .bg-light, .bg-white
+//     .form-control, .custom-file-control, .is-focused .form-control, .is-focused .custom-file-control
+//         background-image: linear-gradient(to top, #6c757d 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, rgba(0, 0, 0, 0)1px)
+
+::-webkit-input-placeholder{
+    font-style: italic;
+}
+
+// :-moz-placeholder
+//    font-style: italic  
+
+// ::-moz-placeholder
+//    font-style: italic  
+
+// :-ms-input-placeholder
+//    font-style: italic

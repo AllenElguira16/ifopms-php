@@ -1,0 +1,18 @@
+Options -MultiViews
+RewriteEngine On
+Options -Indexes
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^ index.php [L]
+
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+# One month for most static assets
+<filesMatch ".(css|jpg|jpeg|png|gif|js|ico|woff2)$">
+  Header set Cache-Control "max-age=2628000, public"
+</filesMatch>

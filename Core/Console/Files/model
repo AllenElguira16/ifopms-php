@@ -1,0 +1,9 @@
+<?php
+namespace App\Http\Models;
+
+use Core\Database\DB;
+use Core\Framework\Model;
+
+class (classname) extends Model{
+
+}
