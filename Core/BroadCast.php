@@ -19,7 +19,7 @@ class BroadCast
     /**
      * Link referrer
      */
-    protected $http = "https://www.ifopms.dev:8000";
+    protected $http = "localhost:8000";
 
     /**
      * add custom server

@@ -11,7 +11,7 @@ class Navigation extends React.Component<any, any>{
     modal: false
   }
   loadPortfolio(type: any){
-    let socket = io('https://www.ifopms.dev:8000');
+    let socket = io(':8000');
     socket.emit('loadPortfolio', type);
   }
   componentDidMount(){

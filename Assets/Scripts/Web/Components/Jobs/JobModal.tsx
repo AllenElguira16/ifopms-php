@@ -11,7 +11,7 @@ export default class JobModal extends React.Component<any, any>{
     this.props.toggleModal();
   }
   openMessage(){
-    let socket = io("https://www.ifopms.dev:8000");    
+    let socket = io(":8000");    
     socket.emit('openMsg');
   }
   componentWillReceiveProps(props: any){

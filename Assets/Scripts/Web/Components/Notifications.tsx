@@ -27,8 +27,8 @@ class Notifications extends React.Component<any, any>{
     // console.log(notifications);
     return (
       <>
-        {notifications.length !== 0 && notifications.map((notif: any) => 
-          <DropdownItem>
+        {notifications.length !== 0 && notifications.map((notif: any, i: number) => 
+          <DropdownItem key={i}>
             <>
               {/* <td> */}
                 <img src={`/uploads/profiles/${notif.fellowId}/${notif.file}`} alt="img" className="rounded-circle img-fluid" style={{ height: 30, width: 30 }}/>

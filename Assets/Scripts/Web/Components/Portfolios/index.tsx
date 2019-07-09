@@ -36,7 +36,7 @@ class Portfolios extends React.Component<any, any>{
   }
 
   componentDidUpdate(){
-    let socket = io('https://www.ifopms.dev:8000');
+    let socket = io(':8000');
     socket.on('loadPortfolio', (type: any) => {
       this.fetchPortfolio(type);
     });

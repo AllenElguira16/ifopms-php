@@ -21,7 +21,7 @@ export default class MessageContents extends React.Component<any, any>{
   }
 
   componentWillUpdate(){
-    let socket = io('https://www.ifopms.dev:8000');
+    let socket = io(':8000');
     let { receiver } = this.props;
     socket.on('newMessage', () => {
       this.loadMsg(receiver.id);
