@@ -1,17 +1,19 @@
-import * as React from 'react';
-import Axios from 'axios';
+import React from 'react';
+import Axios, { AxiosResponse } from 'axios';
 
 export default class Contacts extends React.Component<any, any>{
-  state = {
-    contacts: [{}]
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      contacts: []
+    }
   }
-  componentDidMount(){
-    Axios.get('/api/contacts').then(res => {
-      this.setState({
-        contacts: res.data
-      })
-    });
+  
+  async componentDidMount(){
+    let res: AxiosResponse = await Axios.get('/api/contacts')
+    this.setState({ contacts: res.data })
   }
+  
   render(){
     let {contacts} = this.state;
     
