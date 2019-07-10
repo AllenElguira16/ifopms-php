@@ -57,7 +57,7 @@ class Home extends React.Component<any, any>{
         <Container className="d-flex justify-content-around position-absolute " style={{top: 400, left: 0, right: 0}}>
           {/* <Col lg={10}> */}
             <Form className="w-100" method="POST" onSubmit={this.submit.bind(this)}>
-              <Row form="true" className="justify-content-center"> 
+              <Row className="justify-content-center"> 
                 <Col md={6}>
                   <FormGroup>
                     <Input type="select" className="bg-white" name="categoryInput" value={categoryInput} onChange={this.handleInputChange.bind(this)}>

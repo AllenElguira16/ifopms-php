@@ -14,6 +14,7 @@ export default class Contacts extends React.Component<any, any>{
   }
   render(){
     let {contacts} = this.state;
+    
     return (
       <div>
         {contacts.length !== 0 && contacts.map((contact: any, i: number) => 

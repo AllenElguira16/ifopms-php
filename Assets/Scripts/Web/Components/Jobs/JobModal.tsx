@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { ModalBody, Modal, ModalHeader, ModalFooter, Button, Row, Col, Card, CardBody } from 'reactstrap';
-import * as io from 'socket.io-client';
+import io from 'socket.io-client';
 import Axios, { AxiosResponse } from 'axios';
 
 export default class JobModal extends React.Component<any, any>{

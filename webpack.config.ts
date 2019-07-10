@@ -1,22 +1,17 @@
 "use strict"
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const webpack = require("webpack");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const WebpackNotifier = require("webpack-notifier");
-const {CheckerPlugin} = require("awesome-typescript-loader");
+import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import webpack, { Configuration } from "webpack";
+import WebpackNotifier from "webpack-notifier";
 var isProd = process.env.NODE_ENV.trim() === 'production';
 
-module.exports = {
+const config: Configuration = {
   performance: {
     hints: false
   },
   watch: isProd ? false : true,
   entry: {
-    main: ["./Assets/Scripts/Web/index.tsx"],
-    dashboard: ["./Assets/Scripts/Dashboard/index.tsx"],
+    main: ["./Assets/Scripts/index.tsx"],
     vendor: ["react", "react-dom", "react-router-dom"]
   },
   output: {
@@ -27,32 +22,12 @@ module.exports = {
   resolve: {
     extensions: ['*', '.ts', '.tsx', '.jsx', '.js', '.json', '.vue']
   },
-  // optimization: {
-  //   minimizer: [
-  //     new OptimizeCssAssetsPlugin(),
-  //     new UglifyJsPlugin({
-  //       cache: isProd ? true : false,
-  //       parallel: true,
-  //       uglifyOptions: {
-  //         compress: {
-  //           warnings: false, // Suppress uglification warnings
-  //           pure_getters: true,
-  //           unsafe: true,
-  //           unsafe_comps: true,
-  //         },
-  //         ecma: 6,
-  //         mangle: true
-  //       },
-  //       sourceMap: true
-  //     })
-  //   ],
-  // },
   module: {
     rules: [
       {
         test: /\.(tsx|ts)/,
         exclude: /node_modules/,
-        loader: 'ts-loader'
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.(scss|sass)$/,
@@ -86,8 +61,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new CheckerPlugin(),
-    // new ErrorOverlayPlugin(),
     new WebpackNotifier({
       title: "Webpack",
       alwaysNotify: true,
@@ -96,17 +69,11 @@ module.exports = {
       filename: "../Styles/[name].bundle.css",
       
     }),
-    // new webpack.optimize.AggressiveMergingPlugin({
-    //   minSize: 10000,
-    //   maxSize: 30000
-    // }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
     }),
   ],
-  // devtool: 'source-map',
-  // node: {
-  //   fs: "empty"
-  // }
 }
+
+export default config;

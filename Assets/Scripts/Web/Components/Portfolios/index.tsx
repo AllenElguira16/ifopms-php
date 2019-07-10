@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 import Axios from "axios";
 import {
   Row, Card, CardImg, CardBody, CardText, CardTitle, Button, 
   Form, FormGroup, Input, Col
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import * as io from 'socket.io-client';
+import io from 'socket.io-client';
 import PortfolioCard from './PortfolioCard';
 import Portfolio from "../Portfolio";
 

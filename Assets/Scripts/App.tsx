@@ -1,21 +1,21 @@
 import * as React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import Home from "./Components/Home"
-import Footer from "./Components/Footer"
-import Header from "./Components/Header"
-import PageNotFound from "./Components/PageNotFound";
-import Register from "./Components/Forms/Register";
+import Home from "./Web/Components/Home"
+import Footer from "./Web/Components/Footer"
+import Header from "./Web/Components/Header"
+import PageNotFound from "./Web/Components/PageNotFound";
+import Register from "./Web/Components/Forms/Register";
 import Axios from "axios";
-import Login from "./Components/Forms/Login";
-import Profile from "./Components/Profile";
-import Portfolio from "./Components/Portfolio";
-import Freelancer from "./Components/Freelancer";
-import Messages from "./Components/Messages";
-import EditProfile from "./Components/Profile/EditProfile";
-import SearchPage from "./Components/SearchPage";
-import Jobs from "./Components/Jobs";
-import PortfoliosHome from "./Components/Home/PortfoliosHome";
+import Login from "./Web/Components/Forms/Login";
+import Profile from "./Web/Components/Profile";
+import Portfolio from "./Web/Components/Portfolio";
+import Freelancer from "./Web/Components/Freelancer";
+import Messages from "./Web/Components/Messages";
+import EditProfile from "./Web/Components/Profile/EditProfile";
+import SearchPage from "./Web/Components/SearchPage";
+import Jobs from "./Web/Components/Jobs";
+import PortfoliosHome from "./Web/Components/Home/PortfoliosHome";
 // import PortfolioUpload from "./Components/Freelancer/Content/PortfolioUpload";
 
 class App extends React.Component<any, any>{

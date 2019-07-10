@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as io from "socket.io-client";
+import React from "react";
+import io from "socket.io-client";
 import Axios from "axios";
 
 

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import Axios from 'axios';
-import * as io from 'socket.io-client';
+import io from 'socket.io-client';
 
 export default class MessageContents extends React.Component<any, any>{
   state = {
