@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "preserveConstEnums": true,
-    "removeComments": true,
-    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types"],
+    "moduleResolution": "node",
     "target": "esnext",
-    "allowJs": true
+    "module": "commonjs",
+    "baseUrl": "src",
+    "outDir": "dist",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    // "noEmit": true,
+    // "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "allowJs": true,
+    "strict": true,
+    "jsx": "react"
   },
-  "include": [
-    "./Assets/Scripts/**/*"
-  ]
+  "include": ["./Assets/Scripts/**/*", "./**/*.ts"]
 }

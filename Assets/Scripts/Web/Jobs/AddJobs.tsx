@@ -1,58 +1,79 @@
-import * as React from 'react';
-import { Container, Modal, Button, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-import Axios, { AxiosResponse } from 'axios';
+import * as React from "react";
+import {
+  Container,
+  Modal,
+  Button,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
+import Axios, { AxiosResponse } from "axios";
 
-export default class AddJobs extends React.Component<any, any>{
-  constructor(props: any){
+export default class AddJobs extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       modal: false,
       // companyName: '',
       categories: [],
-      jobTitle: '',
-      jobDescription: '',
-      location: '',
+      jobTitle: "",
+      jobDescription: "",
+      location: ""
       // type: ''
-    }
+    };
   }
 
-  toggleModal = (e: any) => {
-    this.setState({modal: !this.state.modal});
-  }
-  
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal });
+  };
+
   handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     });
-  }
+  };
 
   handleSubmit = (e: any) => {
     e.preventDefault();
-    let {jobTitle, jobDescription, location} = this.state;
-    Axios.post('/api/addJobs', {
-      jobTitle, jobDescription, location
+    let { jobTitle, jobDescription, location } = this.state;
+    Axios.post("/api/addJobs", {
+      jobTitle,
+      jobDescription,
+      location
     }).then((res: AxiosResponse) => {
-      alert('Success');
+      alert("Success");
+    });
+  };
+
+  componentDidMount() {
+    Axios.get("/api/getCategories").then(res => {
+      this.setState({
+        categories: res.data
+      });
     });
   }
 
-  componentDidMount(){
-    Axios.get('/api/getCategories').then(res => {
-      this.setState({
-        categories: res.data
-      })
-    })
-  }
-
   render() {
-    let {modal, categories} = this.state;
+    let { modal, categories } = this.state;
     // console.log(this.props);
     return (
       <>
-        <Button className="btn-raised" color="dark" onClick={this.toggleModal.bind(this)}>Post Jobs</Button>
+        <Button
+          className="btn-raised"
+          color="dark"
+          onClick={this.toggleModal.bind(this)}
+        >
+          Post Jobs
+        </Button>
         <Modal isOpen={modal} toggle={this.toggleModal.bind(this)}>
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <ModalHeader toggle={this.toggleModal.bind(this)}>Post jobs</ModalHeader>
+            <ModalHeader toggle={this.toggleModal.bind(this)}>
+              Post jobs
+            </ModalHeader>
             <ModalBody>
               {/* <FormGroup>
                 <Label>Company Name</Label>
@@ -61,20 +82,39 @@ export default class AddJobs extends React.Component<any, any>{
 
               <FormGroup>
                 <Label>Job Title</Label>
-                <Input type="select" name="jobTitle" value={this.state.jobTitle} onChange={this.handleInput}>
-                  <option value="" defaultValue="" hidden disabled>Choose</option>
-                  {categories.map((title: any, i: number) => 
-                    <option value={title.name} key={i}>{title.name}</option>
-                  )}
+                <Input
+                  type="select"
+                  name="jobTitle"
+                  value={this.state.jobTitle}
+                  onChange={this.handleInput}
+                >
+                  <option value="" defaultValue="" hidden disabled>
+                    Choose
+                  </option>
+                  {categories.map((title: any, i: number) => (
+                    <option value={title.name} key={i}>
+                      {title.name}
+                    </option>
+                  ))}
                 </Input>
               </FormGroup>
               <FormGroup>
                 <Label>Job description</Label>
-                <Input type="textarea" name="jobDescription" value={this.state.jobDescription} onChange={this.handleInput}/>
+                <Input
+                  type="textarea"
+                  name="jobDescription"
+                  value={this.state.jobDescription}
+                  onChange={this.handleInput}
+                />
               </FormGroup>
-              <FormGroup >
+              <FormGroup>
                 <Label>Location</Label>
-                <Input type="text" name="location" value={this.state.location} onChange={this.handleInput}/>
+                <Input
+                  type="text"
+                  name="location"
+                  value={this.state.location}
+                  onChange={this.handleInput}
+                />
               </FormGroup>
               {/* <FormGroup>
                 <Label>Type</Label>
@@ -87,7 +127,9 @@ export default class AddJobs extends React.Component<any, any>{
             </ModalBody>
             <ModalFooter>
               <Button type="submit">Add</Button>
-              <Button onClick={this.toggleModal.bind(this)} type="button">Close</Button>
+              <Button onClick={this.toggleModal.bind(this)} type="button">
+                Close
+              </Button>
             </ModalFooter>
           </Form>
         </Modal>

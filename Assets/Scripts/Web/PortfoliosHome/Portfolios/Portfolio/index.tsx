@@ -71,7 +71,7 @@ class Portfolio extends React.PureComponent<any, any>{
                       <DropdownToggle color="white" className="">
                         <i className="material-icons">edit</i>
                       </DropdownToggle>
-                      <DropdownMenu left>
+                      <DropdownMenu left="true">
                         <DropdownItem>Edit</DropdownItem>
                         <DropdownItem>Delete</DropdownItem>
                       </DropdownMenu>

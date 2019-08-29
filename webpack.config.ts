@@ -1,9 +1,11 @@
-"use strict"
 import path from "path";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack, { Configuration } from "webpack";
 import WebpackNotifier from "webpack-notifier";
-var isProd = process.env.NODE_ENV.trim() === 'production';
+let isProd;
+if (process.env.NODE_ENV) {
+  isProd = process.env.NODE_ENV.trim() === "production";
+}
 
 const config: Configuration = {
   performance: {
@@ -17,63 +19,62 @@ const config: Configuration = {
   output: {
     path: path.resolve(__dirname, "Public/Scripts"),
     filename: "[name].bundle.js",
-    chunkFilename: '[name].bundle.js'   
+    chunkFilename: "[name].bundle.js"
   },
   resolve: {
-    extensions: ['*', '.ts', '.tsx', '.jsx', '.js', '.json', '.vue']
+    extensions: ["*", ".ts", ".tsx", ".jsx", ".js", ".json", ".vue"]
   },
   module: {
     rules: [
       {
         test: /\.(tsx|ts)/,
         exclude: /node_modules/,
-        loader: 'awesome-typescript-loader'
+        loader: "awesome-typescript-loader"
       },
       {
         test: /\.(scss|sass)$/,
         use: [
           // isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ],
+          "css-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.css$/,
         use: [
           // isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
+          "css-loader"
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader',
+        loader: "url-loader"
       },
       {
         test: /\.(jpe?g|png|gif)/,
-        loader: 'url-loader',
+        loader: "url-loader"
       },
       {
         test: /\.(zip|rar)/,
-        loader: 'url-loader'
+        loader: "url-loader"
       }
     ]
   },
   plugins: [
     new WebpackNotifier({
       title: "Webpack",
-      alwaysNotify: true,
+      alwaysNotify: true
     }),
     new MiniCssExtractPlugin({
-      filename: "../Styles/[name].bundle.css",
-      
+      filename: "../Styles/[name].bundle.css"
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
-  ],
-}
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ]
+};
 
 export default config;
